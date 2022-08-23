@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Canvas to Image Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<!-- <script src="html2canvas.js"></script> -->
+	</head>
+	<body>
+		<div id="capture">
+			<img id="img" src="" alt="">
+		</div>
+		<div>
+			<h2>Hello world this is awesome</h2>
+			<iframe id='frame' src="https://google.com" width="100%" height="100%" frameborder="0" allow="camera"
+			style="width:1024px; height:473px; border:0; overflow:hidden;">
+			</iframe>
+		</div>
+		<button onclick="onBtnClick()">Click Me</button>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
+		<script src="assets/js/domvas.js"></script>
+		<script src="assets/js/iframe2image.js"></script>
+		<script>
+			var image = document.getElementById("img");
+			var inner = document.getElementById('frame');
+			iframe2image(inner, cb);
+		</script>
+		<script>
+		
+		function onBtnClick(){
+		console.log('btn click');
+		// Get the image
+		iframe2image(inner, function (err, img) {
+		// If there is an error, log it
+		if (err) { return console.error(err); }
+		// Otherwise, add the image to dom
+		image.src = img.src;
+		html2canvas(document.querySelector("#capture")).then(canvas => {
+		// getting the base 64 image converted data
+		var jpegUrl = canvas.toDataURL("image/jpeg");
+		console.log('jpqgdata=' + jpegUrl);
+		});
+		});
+		}
+		</script>
+	</body>
+</html>

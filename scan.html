@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Kampung Multiverse</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+			}
+			.body{
+				height: 100vh;
+				width: 100vw;
+				position: relative;
+				background-image: url('assets/img/bg-multiverse.png');
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			#frame{
+				height: 0;
+				widows: 0;
+			}
+			.capture{
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 16px;
+				width: 100vw;
+				bottom: 36px;
+			}
+			
+			.btn-capture{
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				border: 2px solid white;
+			}
+			.btn-capture:hover{
+				background-color: red;
+				transition: .5s ease all;
+			}
+			#frame:-webkit-full-screen {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+			}
+			#frame:-moz-full-screen {
+				margin: 0;
+			}
+			#frame:-ms-fullscreen {
+				margin: 0;
+			}
+			/* W3C proposal that will eventually come in all browsers */
+			#frame:fullscreen {
+				margin: 0;
+			}
+			#go-button{
+				background-color: white;
+				padding: 12px;
+				border: none;
+				border-radius: 12px;
+				font-weight: bold;
+			}
+			.content{
+				position: absolute;
+				top: 20px;
+				color: white;
+				font-weight: bold;
+				padding: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="body">
+			<div class="frame">
+				<!-- <iframe id="frame" src="https://mywebar.com/p/Project_0_6qj9vyih45?_ga=2.245542721.498771656.1659445481-2054939137.1658754356" frameborder="0" allow="camera"></iframe> -->
+				<iframe id="frame" src="https://mywebar.com/p/Project_4_9p8nryvfb5?_ga=2.146414068.195132357.1661245741-2054939137.1658754356" frameborder="0" allow="camera; accelerometer; vr" > Your browser does not support embedded content </iframe>
+			</div>
+		</div>
+		<div class="content">
+			<h1 class="text-center">KAMPUNG MULTIVERSE</h1>
+			<h3 class="text-center">Petunjuk Penggunaan</h3>
+			<br>
+			<ol class="list-group list-group-numbered">
+				<li class="list-group-item bg-transparent text-white">Kunjungi Desa Wisata Tanjungjaya</li>
+				<li class="list-group-item bg-transparent text-white">Temukan QR Code di Lokasi Wisata</li>
+				<li class="list-group-item bg-transparent text-white">Izinkan Browser Untuk Mengakses Kamera Perangkat Anda</li>
+				<li class="list-group-item bg-transparent text-white">Klik Tombol "Buka Kamera"</li>
+				<li class="list-group-item bg-transparent text-white">Arahkan Kamera Ke QR Code Yang Telah Disediakan</li>
+				<li class="list-group-item bg-transparent text-white">Gunakan Fitur Screenshot pada perangkat anda untuk mendapatkan hasil gambar</li>
+				<li class="list-group-item bg-transparent text-white">Gunakan fitur Screen Recorder pada perangkat anda untuk mendapatkan hasil video</li>
+			</ol>
+			<br>
+			<div class="w-100 text-center">
+				<button id="go-button">Buka Camera</button>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<!-- https://github.com/niklasvh/html2canvas -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
+		<script>
+		var frame =$("#frame");
+		function capture () {
+		console.log(frame);
+		html2canvas(frame).then(function(canvas){
+		const image = canvas.toDataURL('image/png');
+		let a = document.createElement("a");
+		a.download = "kampung-multiverse.png";
+		a.href = image;
+		a.click();
+		});
+		}
+		
+		</script> -->
+		<script>
+			/* Get into full screen */
+			function GoInFullscreen(element) {
+				if(element.requestFullscreen)
+					element.requestFullscreen();
+				else if(element.mozRequestFullScreen)
+					element.mozRequestFullScreen();
+				else if(element.webkitRequestFullscreen)
+					element.webkitRequestFullscreen();
+				else if(element.msRequestFullscreen)
+					element.msRequestFullscreen();
+			}
+			/* Get out of full screen */
+			function GoOutFullscreen() {
+				if(document.exitFullscreen)
+					document.exitFullscreen();
+				else if(document.mozCancelFullScreen)
+					document.mozCancelFullScreen();
+				else if(document.webkitExitFullscreen)
+					document.webkitExitFullscreen();
+				else if(document.msExitFullscreen)
+					document.msExitFullscreen();
+			}
+			/* Is currently in full screen or not */
+			function IsFullScreenCurrently() {
+				var full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+				
+				// If no element is in full-screen
+				if(full_screen_element === null)
+					return false;
+				else
+					return true;
+			}
+			$("#go-button").on('click', function() {
+				if(IsFullScreenCurrently())
+					GoOutFullscreen();
+				else
+					GoInFullscreen($("#frame").get(0));
+			});
+			$(document).on('fullscreenchange webkitfullscreenchange mozfullscreenchange MSFullscreenChange', function() {
+				if(IsFullScreenCurrently()) {
+					// $("#element iframe").text('Full Screen Mode Enabled');
+					$("#go-button").text('Buka Camera');
+				}
+				else {
+					// $("#element iframe").text('Full Screen Mode Disabled');
+					$("#go-button").text('Buka Camera');
+				}
+			});
+		</script>
+		
+	</body>
+</html>
